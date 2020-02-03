@@ -4,13 +4,19 @@ body {
   line-height: 1;
 }
 
+#currentDay {
+  font-size: 30px;
+  font-weight: bold;
+}
+
 textarea{
-  background: transparent;
+  background: #d3d3d3;
   border: none;
   resize: none;
   color: #000000;
   border-left: 1px solid black;
   padding: 10px;
+  width: 75%;
 }
 
 .jumbotron {
@@ -36,12 +42,6 @@ textarea{
   border-top: 1px solid white;;
 }
 
-.hour {
-  background-color: #ffffff;
-  color: #000000;
-  border-top: 1px dashed #000000;
-}
-
 .past {
   background-color: #d3d3d3;
   color: white;
@@ -62,6 +62,7 @@ textarea{
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
+  width: 3rem;
   color: white;
 }
 
