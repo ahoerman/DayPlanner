@@ -1,48 +1,49 @@
-let m = moment().format(`MMMM Do YYYY`);
+$(document).ready(function() {
 
+let m = moment().format(`MMMM Do YYYY`);
 $("#currentDay").text(m);
 
- $("button.9").on("click", function(){
-     let newTask = $(".9").val();
-    console.log(newTask);
- })
+let plans = {
+    9: "",
+    10: "",
+    11: "",
+    12: "",
+    13: "",
+    14: "",
+    15: "",
+    16: "",
+    17: "",
+};
 
- $("button.10").on("click", function(){
-    let newTask = $(".10").val();
-    console.log(newTask);
-})
+$(document).on("click", ".saveBtn", function(){
+    let dataVal = parseInt($(this).attr("data-value"));
+    let textInput = $(`textarea.${dataVal}`).val();
+    console.log(textInput);
+    plans[dataVal] = textInput;
+    localStorage.setItem("savedPlans", JSON.stringify(plans));
+});
 
-$("button.11").on("click", function(){
-    let newTask = $(".11").val();
-    console.log(newTask);
-})
+  
+  function getPlans() {
+      let savedPlans = JSON.parse(localStorage.getItem("savedPlans"));
+      if (savedPlans){
+          return savedPlans;
+        }
+        else {
+            return plans;
+        }
+    };
+    
+function displayPlans () {
+    plans = getPlans();
+    let planKeys = Object.keys(plans);
+    console.log(planKeys);
+    planKeys.forEach(function(key, index) {
+        $(`textarea.${key}`).val(plans[key]);
+    })
 
-$("button.12").on("click", function(){
-    let newTask = $(".12").val();
-    console.log(newTask);
-})
+}
 
-$("button.1").on("click", function(){
-    let newTask = $(".1").val();
-    console.log(newTask);
-})
-
-$("button.2").on("click", function(){
-    let newTask = $(".2").val();
-    console.log(newTask);
-})
-
-$("button.3").on("click", function(){
-    let newTask = $(".3").val();
-    console.log(newTask);
-})
-
-$("button.4").on("click", function(){
-    let newTask = $(".4").val();
-    console.log(newTask);
-})
-
-$("button.5").on("click", function(){
-    let newTask = $(".5").val();
-    console.log(newTask);
+displayPlans();
+    
 })
